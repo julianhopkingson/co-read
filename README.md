@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Co-Read 📚
+
+A mobile-first Progressive Web App (PWA) for shared reading and community discussion.
+
+## Features
+
+### 📖 EPUB Reading
+- Upload and read EPUB books directly in the browser
+- Adjustable font size and reading progress tracking
+- Book cover extraction and display
+
+### 💬 Community Discussion
+- Create posts and discussions about books
+- Comment and like system
+- Book-linked discussion threads
+
+### 👤 User Profiles
+- Customizable avatar with image cropping
+- Nickname and profile management
+- Reading history tracking
+
+### 🔐 Authentication
+- Secure login with NextAuth.js
+- Role-based access control (User/Admin)
+- Admin panel for user management
+
+### 🌐 Internationalization
+- Multi-language support (English/中文)
+- Dynamic language switching
+
+## Tech Stack
+
+- **Framework**: Next.js 16.1 (App Router)
+- **Language**: TypeScript
+- **Database**: SQLite with Prisma ORM
+- **Auth**: NextAuth.js v5
+- **Styling**: Tailwind CSS
+- **EPUB Parsing**: epub.js
+- **UI Components**: Radix UI, Lucide Icons
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
 
 ```bash
+# Install dependencies
+npm install
+
+# Setup database
+npx prisma generate
+npx prisma db push
+
+# Seed sample data (optional)
+npx prisma db seed
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env` file:
 
-## Learn More
+```env
+DATABASE_URL="file:./dev.db"
+AUTH_SECRET="your-auth-secret"
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+co-read/
+├── app/
+│   ├── (dashboard)/     # Main app pages (books, discuss, profile)
+│   ├── admin/           # Admin panel
+│   ├── reader/          # EPUB reader
+│   └── api/             # API routes
+├── components/          # React components
+├── lib/                 # Utility functions & server actions
+├── prisma/              # Database schema & migrations
+├── locales/             # i18n translation files
+└── public/              # Static assets
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
