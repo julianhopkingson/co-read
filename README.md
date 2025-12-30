@@ -89,6 +89,3 @@ co-read/
 └── public/              # Static assets
 ```
 
-## License
-
-MIT
